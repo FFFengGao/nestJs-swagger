@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-import { AppModule } from './app.module';
+import { AppModule } from './app/api/app.module';
 
 async function bootstrap() {
   // 注册依赖
@@ -8,8 +8,8 @@ async function bootstrap() {
 
   // 申明静态文件，MVC模式
   app.useStaticAssets(__dirname + '/public');
-  app.setBaseViewsDir(__dirname + '/views');
-  app.setViewEngine('hbs');
+  app.setBaseViewsDir(__dirname + '/public');
+  app.setViewEngine('html');
 
   // openAPI（swagger）配置
   const options = new DocumentBuilder()
